@@ -4,7 +4,13 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "accelerate>=1.6.0",
+    "loguru>=0.7.3",
+    "qwen-vl-utils>=0.0.11",
+    "torchvision>=0.22.0",
+    "transformers[torch]>=4.51.3",
+]
 
 [dependency-groups]
 dev = [
