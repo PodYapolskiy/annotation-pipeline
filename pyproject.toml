@@ -10,6 +10,7 @@ dependencies = [
     "qwen-vl-utils>=0.0.11",
     "torchvision>=0.22.0",
     "transformers[torch]>=4.51.3",
+    "ultralytics>=8.3.132",
 ]
 
 [dependency-groups]
