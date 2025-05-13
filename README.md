@@ -1,5 +1,11 @@
 # Annotation Pipeline
 
+## Tracking
+
+```bash
+bash scripts/mlflow.sh
+```
+
 ## Test
 
 To test on 1 sample use

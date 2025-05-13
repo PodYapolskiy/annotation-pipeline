@@ -33,7 +33,7 @@ def generate_description(img_path: str) -> str:
             "content": [
                 {
                     "type": "image",
-                    "image": img_path,
+                    "image": str(img_path),
                 },
                 {"type": "text", "text": "Describe this image."},
             ],
