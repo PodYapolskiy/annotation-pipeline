@@ -1,3 +1,8 @@
+import time
+from pathlib import Path
+from loguru import logger
+import mlflow
+
 import torch
 from transformers import (
     Qwen2_5_VLForConditionalGeneration,
@@ -26,7 +31,10 @@ processor = AutoProcessor.from_pretrained(
 )
 
 
-def generate_description(img_path: str) -> str:
+def generate_description(img_path: Path) -> str:
+    logger.info(f"Start annotating {img_path}")
+    start = time.perf_counter()
+
     messages = [
         {
             "role": "user",
@@ -65,5 +73,11 @@ def generate_description(img_path: str) -> str:
         skip_special_tokens=True,
         clean_up_tokenization_spaces=False,
     )
+
+    end = time.perf_counter()
+    logger.info(f"Finished annotating {img_path} in {end - start:.2f} sec")
+    logger.info(f"Description: {output_text[0]}")
+    mlflow.log_metric("description_generation_time", end - start)
+    mlflow.log_text(output_text[0], "description.txt")
 
     return output_text[0]

@@ -1,5 +1,146 @@
 {
   "image_name": "examples/sample.jpg",
-  "description": "The image shows a robotic arm in the process of picking bananas from a drawer filled with various fruits, including apples and oranges. The robotic arm is equipped with grippers designed to handle the fruit efficiently. The setting appears to be a grocery store or a similar retail environment, as indicated by the shelves and the variety of fruits visible. The robotic arm is likely part of an automated system designed to assist in the sorting or packaging of produce.",
-  "2d_bbox": []
+  "description": "mock",
+  "2d_bbox": [
+    {
+      "object": "banana",
+      "confidence": 0.516,
+      "bbox": [
+        318,
+        221,
+        345,
+        288
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.486,
+      "bbox": [
+        284,
+        223,
+        317,
+        304
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.468,
+      "bbox": [
+        235,
+        140,
+        264,
+        224
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.434,
+      "bbox": [
+        247,
+        222,
+        285,
+        319
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.431,
+      "bbox": [
+        230,
+        223,
+        266,
+        320
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.411,
+      "bbox": [
+        301,
+        221,
+        331,
+        301
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.381,
+      "bbox": [
+        252,
+        139,
+        278,
+        224
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.378,
+      "bbox": [
+        265,
+        223,
+        301,
+        315
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.357,
+      "bbox": [
+        267,
+        140,
+        296,
+        225
+      ]
+    },
+    {
+      "object": "apple",
+      "confidence": 0.347,
+      "bbox": [
+        187,
+        240,
+        221,
+        281
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.346,
+      "bbox": [
+        235,
+        136,
+        370,
+        225
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.34,
+      "bbox": [
+        345,
+        139,
+        373,
+        168
+      ]
+    },
+    {
+      "object": "apple",
+      "confidence": 0.317,
+      "bbox": [
+        173,
+        277,
+        209,
+        323
+      ]
+    },
+    {
+      "object": "banana",
+      "confidence": 0.317,
+      "bbox": [
+        229,
+        222,
+        285,
+        320
+      ]
+    }
+  ]
 }
