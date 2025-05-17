@@ -8,6 +8,8 @@ from transformers import (
     Qwen2_5_VLForConditionalGeneration,
     AutoProcessor,
 )
+
+# from transformers.generation.stopping_criteria import EosTokenCriteria
 from qwen_vl_utils import process_vision_info
 
 model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
@@ -23,7 +25,7 @@ model.eval()
 # You can set min_pixels and max_pixels according to your needs, such as a token range of 256-1280, to balance performance and cost.
 # min_pixels = 256*28*28
 # max_pixels = 1280*28*28
-processor = AutoProcessor.from_pretrained(
+processor: AutoProcessor = AutoProcessor.from_pretrained(
     "Qwen/Qwen2.5-VL-7B-Instruct",
     use_fast=True,
     # min_pixels=min_pixels,
@@ -31,7 +33,7 @@ processor = AutoProcessor.from_pretrained(
 )
 
 
-def generate_description(img_path: Path) -> str:
+def get_description(img_path: Path) -> str:
     logger.info(f"Start annotating {img_path}")
     start = time.perf_counter()
 
@@ -63,7 +65,10 @@ def generate_description(img_path: Path) -> str:
     inputs = inputs.to("cpu")
 
     # Inference: Generation of the output
-    generated_ids = model.generate(**inputs, max_new_tokens=128)
+    generated_ids = model.generate(
+        **inputs,
+        max_new_tokens=512,  # stopping_criteria=[EosTokenCriteria]
+    )
     generated_ids_trimmed = [
         out_ids[len(in_ids) :]
         for in_ids, out_ids in zip(inputs.input_ids, generated_ids)

@@ -3,21 +3,24 @@ import mlflow
 from pathlib import Path
 from loguru import logger
 
+# import supervision as sv
+
+
 import cv2
-from ultralytics import YOLO
+from ultralytics import YOLOWorld
 
 # t is smallest, e is the biggest
-model = YOLO("yolov9e.pt")
-
-# attempt on YOLOWorld
-# model = YOLOWorld("yolov8x-worldv2.pt")
-# model.set_classes(["banana", "apple", "cart", "packet", "wires"])
+# model = YOLO("yolov9e.pt")
+model = YOLOWorld("yolov8x-worldv2.pt")
 
 # id2class = model.names
 
 
-def detect_objects(
-    img_path: Path, save_dir: Path = None, min_confidence: float = 0.0
+def get_detections(
+    img_path: Path,
+    save_dir: Path | None = None,
+    classes: list[str] | None = None,
+    min_confidence: float = 0.0,
 ) -> list[dict]:
     """
     Detects objects in an image and returns a list of dictionaries.
@@ -40,7 +43,11 @@ def detect_objects(
     start = time.perf_counter()
 
     image = cv2.imread(str(img_path))
-    results = model(image)[0]
+
+    if classes and len(classes) > 0:
+        model.set_classes(classes)
+
+    results = model.predict(image, conf=min_confidence)[0]
 
     boxes = results.boxes
     # speed = results.speed
@@ -53,26 +60,25 @@ def detect_objects(
         confidence = float(box.conf[0])
         x_min, y_min, x_max, y_max = map(int, box.xyxy[0])  # bbox
 
-        if confidence >= min_confidence:
-            detections.append(
-                {
-                    "object": class_name,
-                    "confidence": round(confidence, 3),
-                    "bbox": [x_min, y_min, x_max, y_max],
-                }
-            )
+        detections.append(
+            {
+                "object": class_name,
+                "confidence": round(confidence, 3),
+                "bbox": [x_min, y_min, x_max, y_max],
+            }
+        )
 
-            cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
-            label = f"{class_name} {confidence:.2f}"
-            cv2.putText(
-                img=image,
-                text=label,
-                org=(x_min, y_min - 10),
-                fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                fontScale=0.5,
-                color=(0, 255, 0),
-                thickness=2,
-            )
+        cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (0, 255, 0), 1)
+        label = f"{class_name} {confidence:.2f}"
+        cv2.putText(
+            img=image,
+            text=label,
+            org=(x_min, y_min - 10),
+            fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+            fontScale=0.5,
+            color=(0, 255, 0),
+            thickness=2,
+        )
 
     if save_dir:
         cv2.imwrite(save_dir / ("annotated_" + img_path.name), image)
