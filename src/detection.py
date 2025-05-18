@@ -3,17 +3,13 @@ import mlflow
 from pathlib import Path
 from loguru import logger
 
-# import supervision as sv
-
-
 import cv2
+
+# import supervision as sv
 from ultralytics import YOLOWorld
 
-# t is smallest, e is the biggest
-# model = YOLO("yolov9e.pt")
-model = YOLOWorld("yolov8x-worldv2.pt")
 
-# id2class = model.names
+model = YOLOWorld("yolov8x-worldv2.pt")
 
 
 def get_detections(
@@ -47,11 +43,23 @@ def get_detections(
     if classes and len(classes) > 0:
         model.set_classes(classes)
 
-    results = model.predict(image, conf=min_confidence)[0]
-
+    results = model.predict(image, conf=min_confidence)
+    results = results[0]
     boxes = results.boxes
+
+    # Non-Max Suppression (NMS) to Eliminate Double Detections
+    # detections = sv.Detections.from_ultralytics(results).with_nms(threshold=0.1)
+    # print(detections)
+
     # speed = results.speed
     # print(speed)
+
+    # Filtering Detectuions by Area
+    # width, height = video_info.resolution_wh
+    # frame_area = width * height
+    # frame_area
+    # (detections.area / frame_area) < 0.10
+    # detections = detections[(detections.area / frame_area) < 0.10]
 
     detections = []
     for box in boxes:

@@ -1,7 +1,7 @@
 import time
+import mlflow
 from pathlib import Path
 from loguru import logger
-import mlflow
 
 import torch
 from transformers import (
