@@ -51,3 +51,39 @@ def get_objects(text: str) -> list[str]:
     logger.info(f"Extracted objects: {results}")
 
     return results
+
+
+# def get_spatial_relation(b1: list, b2: list) -> str:
+#     x1c, y1c = (b1[0] + b1[2]) // 2, (b1[1] + b1[3]) // 2
+#     x2c, y2c = (b2[0] + b2[2]) // 2, (b2[1] + b2[3]) // 2
+#     dx, dy = x2c - x1c, y2c - y1c
+
+#     relations = []
+#     if abs(dy) < 0.2 * (b1[3] - b1[1]):
+#         if dx > 0:
+#             relations.append("right from")  # справа от
+#         else:
+#             relations.append("left from")  # слева от
+#     if abs(dx) < 0.2 * (b1[2] - b1[0]):
+#         if dy > 0:
+#             relations.append("below")  # ниже
+#         else:
+#             relations.append("above")  # выше
+
+#     return ", ".join(relations)
+
+
+# def get_dominant_color(image, bbox):
+#     x1, y1, x2, y2 = bbox
+#     crop = image[y1:y2, x1:x2]
+#     # Средний цвет в пространстве BGR → переводим в текстовую метку
+#     avg_bgr = np.mean(crop.reshape(-1, 3), axis=0)
+#     # Конвертация в HSV для более точного определения «цвета»
+#     hsv = cv2.cvtColor(np.uint8([[avg_bgr]]), cv2.COLOR_BGR2HSV)[0][0]
+#     # Простая дискретизация оттенков по H
+#     h = hsv[0]
+#     print(h)
+#     # ... реализация маппинга h → «red», «green», «blue» и т.д.
+#     # TODO:
+#     color_name = "red"
+#     return color_name
