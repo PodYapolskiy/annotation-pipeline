@@ -1,145 +1,105 @@
 {
   "image_name": "examples/sample.jpg",
-  "description": "mock",
+  "description": "The image shows a wooden table with various objects on it. On the left side, there is a decorative vase holding some dried flowers and a small white pitcher. Next to these items, there is a large glass pitcher with a metallic lid, which appears to be filled with a dark liquid, possibly coffee or tea. In front of the pitcher, there is a clear glass cup containing a similar dark liquid. On the right side of the table, there are two mechanical arms, likely robotic or robotic-like in appearance, positioned as if they are reaching towards the glass cup. The background is a plain white wall, and the overall setting suggests a modern, possibly experimental or technological environment.",
   "2d_bbox": [
     {
-      "object": "banana",
-      "confidence": 0.516,
+      "object": "large a large glass pitcher",
+      "confidence": 0.903,
       "bbox": [
-        318,
-        221,
-        345,
-        288
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.486,
-      "bbox": [
-        284,
-        223,
-        317,
-        304
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.468,
-      "bbox": [
-        235,
         140,
-        264,
-        224
+        128,
+        270,
+        333
       ]
     },
     {
-      "object": "banana",
-      "confidence": 0.434,
+      "object": "large a large glass pitcher",
+      "confidence": 0.843,
       "bbox": [
-        247,
-        222,
+        84,
+        98,
+        158,
+        199
+      ]
+    },
+    {
+      "object": "wooden a wooden table",
+      "confidence": 0.82,
+      "bbox": [
+        0,
+        134,
+        639,
+        479
+      ]
+    },
+    {
+      "object": "large a large glass pitcher",
+      "confidence": 0.622,
+      "bbox": [
+        306,
+        226,
+        374,
+        328
+      ]
+    },
+    {
+      "object": "decorative a decorative vase",
+      "confidence": 0.611,
+      "bbox": [
+        83,
+        98,
+        159,
+        198
+      ]
+    },
+    {
+      "object": "clear a clear glass cup",
+      "confidence": 0.51,
+      "bbox": [
+        306,
+        226,
+        374,
+        328
+      ]
+    },
+    {
+      "object": "two mechanical like two mechanical arms",
+      "confidence": 0.459,
+      "bbox": [
+        0,
+        279,
+        232,
+        473
+      ]
+    },
+    {
+      "object": "white a plain white wall",
+      "confidence": 0.417,
+      "bbox": [
+        2,
+        0,
+        640,
+        140
+      ]
+    },
+    {
+      "object": "two mechanical like two mechanical arms",
+      "confidence": 0.387,
+      "bbox": [
+        437,
         285,
-        319
+        640,
+        477
       ]
     },
     {
-      "object": "banana",
-      "confidence": 0.431,
+      "object": "decorative a decorative vase",
+      "confidence": 0.169,
       "bbox": [
-        230,
-        223,
-        266,
-        320
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.411,
-      "bbox": [
-        301,
-        221,
-        331,
-        301
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.381,
-      "bbox": [
-        252,
-        139,
-        278,
-        224
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.378,
-      "bbox": [
-        265,
-        223,
-        301,
-        315
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.357,
-      "bbox": [
-        267,
-        140,
-        296,
-        225
-      ]
-    },
-    {
-      "object": "apple",
-      "confidence": 0.347,
-      "bbox": [
-        187,
-        240,
-        221,
-        281
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.346,
-      "bbox": [
-        235,
-        136,
-        370,
-        225
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.34,
-      "bbox": [
-        345,
-        139,
-        373,
-        168
-      ]
-    },
-    {
-      "object": "apple",
-      "confidence": 0.317,
-      "bbox": [
-        173,
-        277,
-        209,
-        323
-      ]
-    },
-    {
-      "object": "banana",
-      "confidence": 0.317,
-      "bbox": [
-        229,
-        222,
-        285,
-        320
+        0,
+        0,
+        170,
+        197
       ]
     }
   ]

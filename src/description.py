@@ -15,7 +15,7 @@ from qwen_vl_utils import process_vision_info
 model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
     "Qwen/Qwen2.5-VL-7B-Instruct",
     torch_dtype=torch.bfloat16,
-    device_map="auto",
+    device_map="cpu",
     # attn_implementation="flash_attention_2",
 )
 model.eval()
