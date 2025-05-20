@@ -160,7 +160,7 @@ uvx pre-commit install
 
 #### Object Descriptions Accuracy & Depth
 
-> ![NOTE]
+> [!NOTE]
 > Not ready yet, plan to implement
 
 1. Use BERTScore with earlier predefined ground truth descriptions
@@ -168,14 +168,14 @@ uvx pre-commit install
 
 #### Object Relations Accuracy
 
-> ![NOTE]
+> [!NOTE]
 > Not ready yet, plan to implement
 
 #### Bboxes Accuracy
 
 <!-- https://github.com/orgs/commun ity/discussions/16925 -->
 
-> ![NOTE]
+> [!NOTE]
 > Not ready yet, plan to implement
 
 1. Sample N images from distinct robot's environments
@@ -192,7 +192,7 @@ uvx pre-commit install
 
 #### Annotation Validation & Improvements
 
-> ![NOTE]
+> [!NOTE]
 > Not ready yet, plan to implement
 
 1. Similar to Bboxes accuracy but extend with validation of extracted objects
