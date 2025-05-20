@@ -1,14 +1,34 @@
 # Annotation Pipeline
 
+> [!WARNING]
+> All scripts and python files should be executed from the project's root if the opposite is not stated explicitly
+
 ## Task
 
-TODO: ...
+Develop a pipeline for automatic image markup using available machine learning models. The implementation must be done in Python
 
-<!-- Учитывая что таска не риалтаймоская, а что мы собираем разметку просто, то можешь забить на временное bound и использовать модель на больше классов или вообще open dictionary -->
+#### Assumptions
+
+- Annotation is performed offline, so we may focus more on accuracy rather than time.
 
 ## Solution / Pipeline
 
-TODO: mermaid
+```mermaid
+graph TD
+    %% Styles %%
+    style Image fill:#f99,stroke:#333,stroke-width:2px,color:#000
+    style VLM fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style spaCy fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style YOLO-World fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style Annotation fill:#bbf,stroke:#333,stroke-width:2px,color:#000
+
+    Image --> VLM
+    VLM[\"VLM"/] -->|Unstructured text description| spaCy
+    Image --> YOLO-World
+    spaCy[/"spaCy"\] -->|list of objects| YOLO-World
+
+    YOLO-World -->|list of objects with bbox, conf, etc.| Annotation
+```
 
 ## Experiments
 
@@ -84,9 +104,6 @@ Calling other problems it should be mentioned that for such a small probabalitie
 ├── uv.lock
 ```
 
-> [!WARNING]
-> All scripts should be executed from the project's root if the opposite is not explicitly stated
-
 ## Data
 
 ```
@@ -138,3 +155,46 @@ uv sync --dev
 ```bash
 uvx pre-commit install
 ```
+
+## Criterions
+
+#### Object Descriptions Accuracy & Depth
+
+> ![NOTE]
+> Not ready yet, plan to implement
+
+1. Use BERTScore with earlier predefined ground truth descriptions
+2. Make a list of main objects on each image and compute precesion / recall/ f1 on extracted objects appeareance
+
+#### Object Relations Accuracy
+
+> ![NOTE]
+> Not ready yet, plan to implement
+
+#### Bboxes Accuracy
+
+<!-- https://github.com/orgs/commun ity/discussions/16925 -->
+
+> ![NOTE]
+> Not ready yet, plan to implement
+
+1. Sample N images from distinct robot's environments
+2. Manually annotate these images
+3. Evaluate pipeline on this validation set by computing IoU with expected bounding boxes
+
+#### Open Source Models
+
+| Stage                                        | Model                  | Link                                                              |
+| :------------------------------------------- | :--------------------- | :---------------------------------------------------------------- |
+| 1. Image description via VLM                 | Qwen2.5-VL-7B-Instruct | [huggingface](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct) |
+| 2. Objects extraction from unstructured text | spaCy                  | [spacy](https://spacy.io/models/en)                               |
+| 3. Objects detection                         | YOLO-World             | [ultralytics](https://docs.ultralytics.com/models/yolo-world/)    |
+
+#### Annotation Validation & Improvements
+
+> ![NOTE]
+> Not ready yet, plan to implement
+
+1. Similar to Bboxes accuracy but extend with validation of extracted objects
+2. Use LLM instead of spaCy model to extract objects from unstructred text
+3. **OR** try structred output from VLM

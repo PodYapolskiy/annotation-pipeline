@@ -47,6 +47,7 @@ def get_detections(
     results = results[0]
     boxes = results.boxes
 
+    # https://supervision.roboflow.com/develop/notebooks/zero-shot-object-detection-with-yolo-world/#using-non-max-suppression-nms-to-eliminate-double-detections
     # Non-Max Suppression (NMS) to Eliminate Double Detections
     # detections = sv.Detections.from_ultralytics(results).with_nms(threshold=0.1)
     # print(detections)
